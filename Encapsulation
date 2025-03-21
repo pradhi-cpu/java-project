@@ -1,0 +1,94 @@
+package com.demo;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Register {
+	public static void main(String args[]) {
+		Scanner in=new Scanner(System.in);
+		Encap person1=new Encap();
+		ArrayList<Encap> al = new ArrayList<>();
+				
+		boolean run=true;
+		while(run)
+		{
+			System.out.println("1)are you a new user");
+			System.out.println("2) existing user");
+			System.out.println("3) exits");
+			System.out.println("4) show all the users");
+			System.out.println("enter the number:");
+			int option=in.nextInt();
+			in.nextLine();
+			if (option==1) {
+				System.out.println("enter your Usernmae");
+				String username=in.nextLine();
+				System.out.println("enter your password");
+				String password=in.nextLine();
+				System.out.println("enter your email");
+				String email=in.nextLine();
+				System.out.println("enter your mobno");
+				long mobno=in.nextLong();
+				in.nextLine();
+				System.out.println("enter your Address");
+				String address=in.nextLine();
+				Date createAt =new Date();
+				Date updateAt =new Date();
+				boolean isActive=true;
+			
+			
+			
+				person1.setUsername(username);
+				person1.setPassword(password);
+				person1.setEmail(email);
+				person1.setAddress(address);
+				person1.setMobno(mobno);
+				person1.setcreateAt(createAt);
+				person1.setupdateAt(updateAt);
+				person1.setisActive(isActive);
+				al.add(person1);
+				
+			}
+			else if(option==2) {
+				boolean user=false;
+				
+				System.out.println("enter username");
+				String name=in.next();
+				
+				System.out.println("enter your password");
+				String password=in.next();
+				
+				for(int i=0; i<al.size(); i++) {
+					Encap userlogin=al.get(i);
+					if(userlogin.getUsername().equals(name) && userlogin.getPassword().equals(password)) {
+						System.out.println("ur logged in");
+						System.out.println("ur profile:");
+						System.out.println(userlogin.getUsername());
+						System.out.println(userlogin.getPassword());
+						System.out.println(userlogin.getEmail());
+						System.out.println(userlogin.getAddress());
+						System.out.println(userlogin.getMobno());
+					    user =true;
+						break;
+					}
+				}
+					if(!user) {
+						System.out.println("Invalid username amd password:");
+					}
+			}
+			else if(option==3) {
+				System.out.println(al);
+			}
+				
+			
+			else if(option==4) {
+				run=false;
+			}
+			else {
+				System.out.println("invaild input enter correct number");
+			}	
+		}
+	}	
+
+}
+
